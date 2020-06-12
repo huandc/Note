@@ -61,7 +61,18 @@ public static void main(String[] args) {
 }
 
 /***
- * 基本数据类型：字符串
+ * 基本数据类型：  
+ * 整数型  byte short int long
+ * 浮点型  float double
+ * 字符型  char
+ * 布尔型  boolean
+ * 
+ * 引用数据类型：  
+ * 字符串  
+ * 数组   
+ * 类   
+ * 接口   
+ * Lambda
  */
 
 
