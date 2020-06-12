@@ -4,14 +4,15 @@
     java 运行 ***
  * */ 
 //后面代表定义一个类的名称，Java当中源代码的基本组成单位
-    public class HelloWorld{
+''''java
+public class HelloWorld{
     //程序的起点main
         public static void main(String[] args)
         //打印内容
             System.out.println("Hello World");
         }
     }
-
+''''
 
 /***
  * 关键字 
