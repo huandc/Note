@@ -3,7 +3,8 @@
  javac 编译 .java -> .class
  java 运行 
 
-//后面代表定义一个类的名称，Java当中源代码的基本组成单位
+#### 后面代表定义一个类的名称，Java当中源代码的基本组成单位
+
 ''''java
 public class HelloWorld{
     //程序的起点main
@@ -37,7 +38,7 @@ public class HelloWorld{
    5.布尔常量:                             true false  
    6.空常量： null 没有任何数据。  
  
-
+''''java
 public static void main(String[] args) {
     //打印字符串常量
     System.out.println("abc");
@@ -60,7 +61,7 @@ public static void main(String[] args) {
     System.out.println(true);
     System.out.println(false);
 }
-
+''''
 
   ###  基本数据类型：  
   整数型  byte short int long  
