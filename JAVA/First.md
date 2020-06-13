@@ -307,7 +307,8 @@ public class Demo4Operator {
  1. 数值来说就是加法。  
  2. 对于字符来说 char被提升为int 再进行计算。
  3. 对于字符串String 来说，代表字符串连接操作。  
-**(任何数据类型和字符串进行连接的时候，都会变成字符串)**
+**(任何数据类型和字符串进行连接的时候，都会变成字符串)**  
+
 ```java
 public class Demo5Plus {
     public static void main(String[] args) {
@@ -322,4 +323,59 @@ public class Demo5Plus {
         System.out.println(str2 + 20 + 30);//Java2030
         System.out.println(str2 + (20 + 30));//Java50
     }
-}```  
+}
+```  
+
+### 自增自减运算符  
+
+- 自增运算符 **++**  
+- 自减运算符 **--**  
+基本含义：加一或者减一  
+使用格式：++num num++  
+使用方式：  
+        1. 单独使用：num++ 和 ++num 没有区别。  
+        2. 混合使用;  **++num 先加一再使用。  num++先使用，再加一。**  
+**注意事项**  
+只有变量才有自增自减。
+
+```java
+public class Demo6Operator {
+    public static void main(String[] args) {
+        int num1 = 10;
+        System.out.println(num1);//10
+        ++num1;//单独使用
+        System.out.println(num1);//11
+        num1++;
+        System.out.println(num1);//12
+        System.out.println("**************");
+
+        //与打印语句混合
+        int num2 = 20;
+        System.out.println(num2);//20
+        System.out.println(++num2);//先++，打印21
+        System.out.println(num2++);//先打印21，再++
+        System.out.println(num2);//22
+        System.out.println("**************");
+
+        int num4 = 40;
+        int result1 = --num4;//先--，再给result
+        System.out.println(result1);//39
+        System.out.println(num4);//39
+
+        int num5 = 50;
+        int result2 = num5--;//先赋值，再--
+        System.out.println(result2);//50
+        System.out.println(num5);//49
+
+        int x = 10;
+        int y = 20;
+        //  11 + 20 = 31
+        int result3 = ++x + y--;
+        System.out.println(result3);
+        System.out.println(x);//11
+        System.out.println(y);//19
+    }
+}
+```  
+
+### 赋值运算符  
