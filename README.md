@@ -54,7 +54,6 @@ GOOGLE.COM
 
 你也可以用 \`\`\` 包裹一段代码，并指定一种语言（也可以不指定）：  
 
-```
 ```java
 public class Main {
 
@@ -63,11 +62,4 @@ public class Main {
         System.out.println("Hello World!");
     }
 }
-```
-```  
-
-```javascript
-$(document).ready(function () {
-    alert('RUNOOB');
-});
 ```
