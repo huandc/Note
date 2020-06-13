@@ -83,6 +83,7 @@ public static void main(String[] args) {
 - 类  
 - 接口  
 - Lambda  
+- tips:
  1.字符串不是基本类型，而是引用类型  
  2.浮点型可能只是一个近似值，并非精确值  
  3.数据范围和字节数不一定相关  float 数据范围比long更加广泛 但 float是4字节 long  8字节  
@@ -156,4 +157,34 @@ public class Demo02Variable {
 
 ### 数据类型转换
 
-一个<kbd>int</kbd>
+当数据类型不一样时，会发生数据类型转换。  
+-自动类型转换(隐式)  
+
+1. 特点：代码不需要特殊处理，自动完成。  
+2. 规则：数据范围从小到大。  
+
+```java
+public class DataType {
+    public static void main(String[] args) {
+        System.out.println(1024);//整数，默认int类型
+        System.out.println(3.14);//浮点数，默认double类型
+        // 左边 long类型 , 右边默认的int类型，左右不一样
+        //int -->long 符合从小到大 发生了自动转换
+        long num1 = 100;
+        System.out.println(num1);//100
+        //左边double 右边float
+        //float -->double 从小到大 发生自动转换
+        double num2 = 2.5F;
+        System.out.println(num2);
+        //long --> float 从小到大。
+        float num3= 30L;
+        System.out.println(num3);
+    }
+}
+```  
+
+-强制类型转换(显式)
+
+ 1. 特点：代码进行特殊格式处理，不能自动完成。
+ 2. 范围小的类型 范围小的变量名 = (范围小的类型) 范围大的数据
+
