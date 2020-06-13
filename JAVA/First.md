@@ -388,6 +388,6 @@ public class Demo6Operator {
   符合赋值运算符  
   <kbd>+=</kbd>  `a += 1;   -----> a = a + 1;`  
   <kbd>-=</kbd>  `a -= 1;   -----> a = a - 1;`  
-  <kbd>*=</kbd>  `a \*= 1;  -----> a = a \* 1;`  
+  <kbd>*=</kbd>  `a *= 1;  -----> a = a * 1;`  
   <kbd>/=</kbd>  `a /= 1;   -----> a = a / 1;`  
   <kbd>%=</kbd>  `a %= 1;   -----> a = a % 1;`  
