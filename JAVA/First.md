@@ -233,3 +233,93 @@ public class DataType2 {
 }
 ```  
 
+### 编码表  
+
+- **ASCII码表**
+- **Unicode码表**   0-127 与ASCII一样  
+
+48 - '0'
+65 - 'A'
+97 - 'a'
+
+```java
+public class Demo3DataTyperChar {
+    public static void main(String[] args) {
+        char char1 = '1';
+        System.out.println(char1 + 0);
+
+        char char3 = 'c';
+
+        //左侧int 类型 右侧char类型
+        //char --> int 自动类型转换
+        int num = char3;
+        System.out.println(num);//99
+
+        char char4 = '中';
+        System.out.println(char4 + 0);
+    }
+}
+```
+
+### 运算符
+
+进行特点操作的符号。+  
+表达式: 运算符连起来的式子。20+5  
+
+- 算术运算符  
+<kbd>**+**</kbd>    加  
+<kbd>**-**</kbd>    减  
+<kbd>__\*__</kbd>   乘  
+<kbd>**/**</kbd>    除 **被除数 / 除数 = 商 。。。 余数** (整数表达式中 整数除以整数仍然是整数，只看商。)  
+<kbd>**%**</kbd>    取余  只有对于整数除法来说取模才有意义。  
+- 注意事项
+
+ 1. 不同类型的数据，结果将是范围大的那种。
+
+```java
+public class Demo4Operator {
+    public static void main(String[] args) {
+        System.out.println(20 + 30);
+        //先计算再输出
+        int a = 20;
+        int b = 30;
+        System.out.println(a - b);
+        //常量变量混合使用
+        System.out.println(a * 10);
+
+        int x = 10;
+        int y = 3;
+        int result = x / y;
+        System.out.println(result);
+        int result2 = x % y;
+        System.out.println(result2);//余数
+
+        // int + double --> double + double = double
+        double result3 = x + 2.5;
+        System.out.println(result3);
+
+    }
+}
+```
+
+### **加号 +** 三种用法  
+
+ 1. 数值来说就是加法。  
+ 2. 对于字符来说 char被提升为int 再进行计算。
+ 3. 对于字符串String 来说，代表字符串连接操作。  
+**(任何数据类型和字符串进行连接的时候，都会变成字符串)**
+```java
+public class Demo5Plus {
+    public static void main(String[] args) {
+        //字符串类型的变量基本使用
+        String str1 = "Hello";
+        System.out.println(str1);
+
+        System.out.println("Hello" + "World");
+        String str2 = "Java";
+        System.out.println(str2 + 20);
+        //优先级
+        System.out.println(str2 + 20 + 30);//Java2030
+        System.out.println(str2 + (20 + 30));//Java50
+    }
+}```  
