@@ -193,3 +193,43 @@ public class DataType {
 - **注意事项**
 
  1. 强制类型转换可能发生精度损失，数据溢出。  
+ 2. _byte/short/char_ 这三种可以发生数学运算 如“+”。  
+ 3. _byte/short/char_ 在运算是会首先提升为int然后进行计算。  
+ 4. **boolean** 类型不能发生数据类型转换
+
+```java
+public class DataType2 {
+    public static void main(String[] args) {
+        //左边int 右边long
+        //long --> int 不是从小到大，不能自动转换
+        // 范围小的类型 范围小的变量名 = (范围小的类型) 范围大的数据
+        int num = (int) 100L;
+        System.out.println(num);
+
+        //long强制转换成int类型
+        int num2 = (int) 6000000000L;
+        System.out.println(num2);//1705032704  溢出
+
+        //double --> int  强制类型转换
+        int num3 = (int) 3.5;
+        System.out.println(num3);// 3 精度损失
+
+        char c1 = 'A';
+        System.out.println((char) (c1 + 1));
+
+        byte num4 = 40;
+        byte num5 = 50;
+        //byte + byte --> int + int =int;
+        //byte result1 = num4 + num5;
+        int result1 = num4 + num5;
+        System.out.println(result1);//不兼容的类型: 从int转换到byte可能会有损失
+
+        short num6 = 60;
+        //byte + short --> int + int = int;
+        // int 强制转换为short 要保证不超出范围
+        short result2 = (short) (num4 + num6);
+        System.out.println(result2);
+    }
+}
+```  
+
