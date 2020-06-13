@@ -25,7 +25,7 @@ We skipped out a 2nd level heading in this document
 ```
 
 When using multiple heading levels, nested headings should increase by only one
-level at a time:
+level at a time: 
 
 ```markdown
 # Heading 1
