@@ -64,18 +64,18 @@ public static void main(String[] args) {
 }
 ```
 
-  ###  基本数据类型：  
+###  基本数据类型：  
   整数型  byte short int long  
   浮点型  float double  
   字符型  char  
   布尔型  boolean  
   
-  ###  引用数据类型：  
+### 引用数据类型：  
   字符串  
-  数组   
-  类   
-  接口   
-  Lambda
+  数组  
+  类  
+  接口  
+  Lambda  
  1.字符串不是基本类型，而是引用类型  
  2.浮点型可能只是一个近似值，并非精确值  
  3.数据范围和字节数不一定相关  float 数据范围比long更加广泛 但 float是4字节 long  8字节  
@@ -139,7 +139,8 @@ public class Demo02Variable {
 ```  
 
 ### 使用多个变量注意事项。  
-1.多个变量名称不能重复。
-2.float和long 的F和L后缀不能丢。
-3.byte、short 数据值不能超出范围。
-4.没有赋值的变量不能直接使用。
+1.多个变量名称不能重复。  
+2.float和long 的F和L后缀不能丢。  
+3.byte、short 数据值不能超出范围。  
+4.没有赋值的变量不能直接使用。  
+5.变量的使用不能超出作用域的范围。  
