@@ -2,10 +2,10 @@
 
 ## 2020/6/12
 
+#### elements
+
 - **javac 编译 .java -> .class**  
 - **java 运行**  
-
-### 后面代表定义一个类的名称，Java当中源代码的基本组成单位
 
 ```java
 public class HelloWorld{
@@ -381,8 +381,6 @@ public class Demo6Operator {
 ### 赋值运算符  
 
 - 基本赋值运算符  
-
-  基本赋值运算符  
   <kbd>=</kbd>  右侧的值赋值给左侧;  
   `int a = 30;`  
   符合赋值运算符  
@@ -391,3 +389,56 @@ public class Demo6Operator {
   <kbd>*=</kbd>  `a *= 1;  -----> a = a * 1;`  
   <kbd>/=</kbd>  `a /= 1;   -----> a = a / 1;`  
   <kbd>%=</kbd>  `a %= 1;   -----> a = a % 1;`  
+
+1. 变量才可以赋值运算;  
+2. 符合赋值运算隐含一个强制类型转换。  
+```java
+public class Demo7Operator {
+    public static void main(String[] args) {
+        int a = 10;
+        a += 5;  //a = a + 5
+        System.out.println(a);//15
+
+        int x = 10;
+        x %= 3;
+        System.out.println(x);//1
+
+        byte num = 30;
+        num += 5;
+        //num = byte + int
+        //num = int + int
+        //num = (byte) int
+        System.out.println(num);
+    }
+}
+```  
+
+### 比较运算符
+
+等于                        <kbd>==</kbd>  
+小于                        <kbd><</kbd>  
+大于                        <kbd>></kbd>  
+大于等于                    <kbd>>=</kbd>  
+小于等于                    <kbd><=</kbd>  
+不等于                      <kbd>!=</kbd>  
+
+1. 比较运算一定是一个boolean 值, true 或者 false.  
+2. 多次判断不能连着写。  1>x>3  **错误**  
+
+```java
+public class Demo8Operator {
+    public static void main(String[] args) {
+        System.out.println(10 > 5);//true
+        int num1 = 10;
+        int num2 = 12;
+        System.out.println(num1 < num2);//true
+        System.out.println(num2 >= 100);//false
+        System.out.println(num2 <= 100);//true
+        System.out.println("*************");
+        System.out.println(10 == 10);//true
+        System.out.println(20 != 10);//true
+    }
+}
+```  
+
+### 逻辑运算符
