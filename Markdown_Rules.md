@@ -1,4 +1,4 @@
-# Rules   [原文](https://github.com/DavidAnson/markdownlint)
+# Rules   [原文](https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md)
 
 This document contains a description of all rules, what they are checking for,
 as well as an examples of documents that break the rule and corrected
