@@ -238,9 +238,9 @@ public class DataType2 {
 - **ASCII码表**
 - **Unicode码表**   0-127 与ASCII一样  
 
-48 - '0'
-65 - 'A'
-97 - 'a'
+48 - '0'  
+65 - 'A'  
+97 - 'a'  
 
 ```java
 public class Demo3DataTyperChar {
@@ -379,3 +379,15 @@ public class Demo6Operator {
 ```  
 
 ### 赋值运算符  
+
+- 基本赋值运算符  
+
+  基本赋值运算符  
+  <kbd>=</kbd>  右侧的值赋值给左侧;  
+  `int a = 30;`  
+  符合赋值运算符  
+  <kbd>+=</kbd>  `a += 1;   -----> a = a + 1;`  
+  <kbd>-=</kbd>  `a -= 1;   -----> a = a - 1;`  
+  <kbd>*=</kbd>  `a \*= 1;  -----> a = a \* 1;`  
+  <kbd>/=</kbd>  `a /= 1;   -----> a = a / 1;`  
+  <kbd>%=</kbd>  `a %= 1;   -----> a = a % 1;`  
