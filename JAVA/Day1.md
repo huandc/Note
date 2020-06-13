@@ -172,10 +172,12 @@ public class DataType {
         //int -->long 符合从小到大 发生了自动转换
         long num1 = 100;
         System.out.println(num1);//100
+
         //左边double 右边float
         //float -->double 从小到大 发生自动转换
         double num2 = 2.5F;
         System.out.println(num2);
+
         //long --> float 从小到大。
         float num3= 30L;
         System.out.println(num3);
