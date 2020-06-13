@@ -32,12 +32,14 @@ Markdown 段落没有特殊的格式，直接编写文字就好，段落的换�
 ```
 RUNOOB.COM  
 GOOGLE.COM  
-\~~BAIDU.COM~~  
-~~BAIDU.COM~~
+~~BAIDU.COM~~  
 ```
+~~BAIDU.COM~~
 * * *
 # 下划线
 下划线可以通过 HTML 的 <u> 标签来实现  
-```<u>带下划线文本</u>```
+```
+<u>带下划线文本</u>
+```  
 <u>带下划线文本</u>
 * * *
