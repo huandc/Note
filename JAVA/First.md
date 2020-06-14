@@ -69,10 +69,10 @@ public static void main(String[] args) {
 
 ### 基本数据类型
 
-- 整数型  byte short int long  
-- 浮点型  float double  
-- 字符型  char  
-- 布尔型  boolean  
+- 整数型  `byte` `short` `int` `long`  
+- 浮点型  `float` `double`  
+- 字符型  `char`  
+- 布尔型  `boolean`  
   
 ### 引用数据类型
 
@@ -85,8 +85,8 @@ public static void main(String[] args) {
 
  1. 字符串不是基本类型，而是引用类型  
  2. 浮点型可能只是一个近似值，并非精确值  
- 3. 数据范围和字节数不一定相关  float 数据范围比long更加广泛 但 float是4字节 long  8字节  
- 4. 浮点数默认double, 使用float 后缀F。  
+ 3. 数据范围和字节数不一定相关  `float` 数据范围比`long`更加广泛 但 `float`是4字节 `long`  8字节  
+ 4. 浮点数默认`double`, 使用`float` 后缀F。  
   整数，默认int 使用long 后缀L。  
 
 ## 2020/6/13  
@@ -148,8 +148,8 @@ public class Demo02Variable {
 ### 使用多个变量注意事项
 
 1.多个变量名称不能重复。  
-2.float和long 的F和L后缀不能丢。  
-3.byte、short 数据值不能超出范围。  
+2.`float`和`long` 的F和L后缀不能丢。  
+3.`byte`、`short` 数据值不能超出范围。  
 4.没有赋值的变量不能直接使用。  
 5.变量的使用不能超出作用域的范围。  
 6.可以通过一个语句创建多个变量。**不推荐**  
@@ -193,8 +193,8 @@ public class DataType {
 - **注意事项**
 
  1. 强制类型转换可能发生精度损失，数据溢出。  
- 2. _byte/short/char_ 这三种可以发生数学运算 如“+”。  
- 3. _byte/short/char_ 在运算是会首先提升为int然后进行计算。  
+ 2. _`byte`/`short`/`char`_ 这三种可以发生数学运算 如“+”。  
+ 3. _`byte`/`short`/`char`_ 在运算是会首先提升为int然后进行计算。  
  4. **boolean** 类型不能发生数据类型转换
 
 ```java
@@ -234,7 +234,7 @@ public class DataType2 {
 ```  
 
 * * *
-对于_byte/short/char_三种类型，如果右侧赋值没有超过范围，那么Java编译器会自动隐含的补上_(byte)/(short)/(char)  
+对于_`byte`/`short`/`char`_三种类型，如果右侧赋值没有超过范围，那么Java编译器会自动隐含的补上_(`byte`)/(`short`)/(`char`)  
 
 ```java
 public class Notice{
@@ -552,7 +552,7 @@ public class Demo01Sequence {
 }
 ```  
 
-选择结构
+判断结构  
 
 - 单if语句
 
@@ -570,6 +570,102 @@ if(关系表达式){
 }else{
     语句2;
 }
-```
+```  
+
+```java
+public static void main(String[] args) {
+        int score = 1000;
+        if (score < 0 || score > 100) {
+            System.out.println("成绩错误");
+        } else if (score >= 90 && score <= 100) {
+            System.out.println("优秀");
+        } else if (score >= 80 && score < 90) {
+            System.out.println("好");
+        } else if (score >= 70 && score < 80) {
+            System.out.println("良好");
+        } else if (score >= 60 && score < 70) {
+            System.out.println("及格");
+        } else {
+            System.out.println("不及格");
+        }
+    }```  
+
+选择结构  
+```java
+switch(表达式){
+    case 常量值1:
+    语句1;
+    break;
+    case 常量值2:
+    语句2
+    break;
+    .....
+    default:
+    语句n+1;
+    break;
+}
+```  
+
+- 执行流程  
+首先计算表达式的值，和`case`进行依次比较，执行对应值的语句，遇到`break`结束。  
+最后，如果都不匹配，执行`defaul`语句体部分。  
+
+```java
+public static void main(String[] args) {
+    int num = 1;
+    switch (num){
+        case 1:
+            System.out.println("星期一");break;
+        case 2:
+            System.out.println("星期二");break;
+        case 3:
+            System.out.println("星期三");break;
+        case 4:
+            System.out.println("星期四");break;
+        case 5:
+            System.out.println("星期五");break;
+        case 6:
+            System.out.println("星期六");break;
+        case 7:
+            System.out.println("星期日");break;
+        default:
+            System.out.println("error");break;
+    }
+}
+```  
+
+1. 多个`case`后面的数值不可以重复。  
+2. `switch` 只能是下列类型。  
+基本数据类型 `byte/char/short/int`  
+引用数据类型 `String、enum`  
+3. `switch` 格式可以灵活：前后顺序可以颠倒，`break`不可以省略。  
 
 循环结构  
+
+- `for`循环格式  
+
+```java
+for(初始表达式; 布尔表达式; 步进表达式){  
+    循环体;  
+}
+```  
+
+- `while`循环格式  
+
+```java
+初始表达式;
+while(布尔表达式){
+    循环体;  
+    步进表达式;  
+}
+```  
+
+- `do....while` 循环格式
+
+```java
+初始表达式;
+do{
+    循环体;  
+    步进表达式;  
+}while(布尔表达式)
+```
