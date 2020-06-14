@@ -642,6 +642,11 @@ public static void main(String[] args) {
 
 循环结构  
 
+1. 初始化语句：最先执行，只执行一次。  
+2. 条件判断：如果成立，循环继续。不成立，推出循环。  
+3. 循环体：重复执行的语句。
+4. 步进语句：每次循环后执行的语句。  
+
 - `for`循环格式  
 
 ```java
@@ -649,6 +654,14 @@ for(初始表达式; 布尔表达式; 步进表达式){
     循环体;  
 }
 ```  
+
+```java
+public static void main(String[] args) {
+    for (int i = 1;i<=100;i++){
+        System.out.println("这是第"+i+"次");
+    }
+}
+```
 
 - `while`循环格式  
 
@@ -668,4 +681,49 @@ do{
     循环体;  
     步进表达式;  
 }while(布尔表达式)
+```  
+
+区别：  
+
+1. 如果条件从来没有满足过，`for`和`while`循环执行0次，`do...while`执行一次。  
+2. `for`循环的变量只能在循环内部使用。`while`、`do...while`循环初始化变量在外部，循环之外可以继续使用。  
+
+- `break`关键字:  
+
+1. 用在`switch`语句中，一旦执行，结束。  
+2. 循环语句中，一旦执行，循环立即结束。  
+
+- `continue`关键字:  
+
+一旦执行,跳过当前次循环,开始下一次循环.  
+
+```java
+public static void main(String[] args) {
+    for (int i = 1; i <= 10; i++) {
+        if (i % 2 == 0) {
+            continue;
+        }
+        //不打印偶数次.
+        System.out.println("Hello " + i);
+    }
+}
+```  
+
+- 死循环  
+
+```java
+while (true) {
+    循环体;
+}
 ```
+
+- 循环嵌套  
+
+```java
+for(初始表达式1 ; 循环条件1 ; 循环条件2) {
+    for(初始表达式2 ; 循环条件3 ; 循环条件4)){
+        循环体;
+    }
+}
+```
+
