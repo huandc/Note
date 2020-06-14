@@ -441,4 +441,76 @@ public class Demo8Operator {
 }
 ```  
 
+## 2020/6/14
+
 ### 逻辑运算符
+
+- 与  <kbd>&&</kbd>  
+- 或  <kbd>||</kbd>  
+- 非  <kbd>!</kbd>  
+
+**短路  <kbd>&&</kbd>  <kbd>||</kbd>**  
+左边如果可以判断出 则不判断后面  
+
+- 注意事项  
+
+1. 逻辑运算只能用域boolean值。  
+2. 与 或 左右各有一个boolean值，取反只有一个boolean值。  
+3. 与 或 如果多个条件 可以连续写。 多个条件 A && B && C。
+
+```java
+public class Demo9Logic {
+    public static void main(String[] args) {
+        System.out.println(true && false);//false
+        System.out.println(3 < 4 && 10 > 5);//true
+        System.out.println(true || true);//true
+        System.out.println(true || false);//true
+        System.out.println(false || false);//false
+        System.out.println(true);//true
+        System.out.println(!true);//false
+        System.out.println("************");
+        //短路
+        int a = 10;
+        System.out.println(3 > 4 && ++a < 100);//false
+        //3>4 为false 则短路 后面执行判断
+        System.out.println(a);//10
+        int b = 20;
+        System.out.println(3 < 4 || ++b < 100);//true
+        System.out.println(b);//20
+    }
+}
+```  
+
+### 三元运算符  
+
+- 一元运算符 一个数据就可以操作。 !  ++  --  
+- 二元运算符 两个数据就可以操作。 +  = +=  
+- 三元运算符 三个数据就可以操作。  
+**数据类型 变量名称 = 条件判断 ? 表达式A : 表达式Ｂ**  
+首先判断是否成立：  
+成立    将A的值赋值给左侧  
+不成立  将B的值赋值给左侧  
+注意事项:  
+
+1. 同时保证A、B 符合左侧数据类型的要求  
+2. 三元运算符的结果必须被使用  
+
+### 方法
+
+- 方法的定义  
+格式  
+
+```java
+public static void 方法名(){  
+    方法体;  
+}  
+```  
+
+方法名称使用小驼峰。  
+方法体：大括号可以包括任意语句。  
+注意事项：  
+
+ 1. 方法定义先后顺序无所谓。  
+ 2. 方法的定义不能产生嵌套包含关系。  
+ 3. 方法定义好，要进行方法的[调用]。  
+调用格式: ```方法名称();```  
