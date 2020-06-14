@@ -233,6 +233,29 @@ public class DataType2 {
 }
 ```  
 
+* * *
+对于_byte/short/char_三种类型，如果右侧赋值没有超过范围，那么Java编译器会自动隐含的补上_(byte)/(short)/(char)  
+
+```java
+public class Notice{
+    public static void main(String[] args){
+        byte num1 = /*(byte)*/ 30;
+        System.out.println(num1)//30
+
+        //int --->  char 
+        char zifu = /*(char)*/ 65;
+        System.out.println(zifu)//A
+    }
+}
+```  
+
+* * *  
+再给变量进行赋值时，如果右侧的表达式都是常量，没有任何变量，那么编译器将会直接将若干和常量表达式计算得到结果。  
+`short result = 5 + 8;` //右侧全是常量，得到的结果即使  
+`short result = 13;`  
+这就是**编译器的常量优化**，一旦有变量参与，则不能进行这种优化。  
+
+
 ### 编码表  
 
 - **ASCII码表**
@@ -498,7 +521,6 @@ public class Demo9Logic {
 ### 方法
 
 - 方法的定义  
-格式  
 
 ```java
 public static void 方法名(){  
@@ -514,3 +536,40 @@ public static void 方法名(){
  2. 方法的定义不能产生嵌套包含关系。  
  3. 方法定义好，要进行方法的[调用]。  
 调用格式: ```方法名称();```  
+
+### 流程
+
+顺序结构 
+
+```java
+public class Demo01Sequence {
+    public static void main(String[] args) {
+        System.out.println("今天气不错");
+        System.out.println("风和日丽");
+        System.out.println("下午没课");
+        System.out.println("挺爽");
+    }
+}
+```  
+
+选择结构
+
+- 单if语句
+
+```java
+if(关系表达式){
+    语句;
+}
+```
+
+- if...else语句  
+
+```java
+if(关系表达式){
+    语句1;
+}else{
+    语句2;
+}
+```
+
+循环结构  
