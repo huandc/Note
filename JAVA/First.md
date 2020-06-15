@@ -556,21 +556,21 @@ if(关系表达式){
 
 ```java
 public static void main(String[] args) {
-        int score = 1000;
-        if (score < 0 || score > 100) {
-            System.out.println("成绩错误");
-        } else if (score >= 90 && score <= 100) {
-            System.out.println("优秀");
-        } else if (score >= 80 && score < 90) {
-            System.out.println("好");
-        } else if (score >= 70 && score < 80) {
-            System.out.println("良好");
-        } else if (score >= 60 && score < 70) {
-            System.out.println("及格");
-        } else {
-            System.out.println("不及格");
-        }
-    }```  
+    int score = 1000;
+    if (score < 0 || score > 100) {
+        System.out.println("成绩错误");
+    } else if (score >= 90 && score <= 100) {
+        System.out.println("优秀");
+    } else if (score >= 80 && score < 90) {
+        System.out.println("好");
+    } else if (score >= 70 && score < 80) {
+        System.out.println("良好");
+    } else if (score >= 60 && score < 70) {
+        System.out.println("及格");
+    } else {
+        System.out.println("不及格");
+    }
+}```  
 
 选择结构  
 ```java
@@ -785,18 +785,18 @@ public static void main(String[] args) {
 3. 赋值调用  
 
 ```java
-    public static void main(String[] args) {
-        //单独调用
-        sum(10, 20);
-        //打印调用
-        System.out.println(sum(10, 20));
-        //赋值调用
-        int s = sum(10, 20);
-        System.out.println(s);
-    }
-    public static int sum(int a, int b) {
-        return a + b;
-    }
+public static void main(String[] args) {
+    //单独调用
+    sum(10, 20);
+    //打印调用
+    System.out.println(sum(10, 20));
+    //赋值调用
+    int s = sum(10, 20);
+    System.out.println(s);
+}
+public static int sum(int a, int b) {
+    return a + b;
+}
 ```
 
 有参数:  小括号有内容,当一个方法需要一个数据条件才能完成认为的时候.  
@@ -915,18 +915,18 @@ array = {11 , 21 , 31};
 如果要返回多个值,使用数组返回.  
 
 ```java
-    public static void main(String[] args) {
-        int[] arr = new int[2];
-        arr = fun(10, 20, 30);
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
-        }
+public static void main(String[] args) {
+    int[] arr = new int[2];
+    arr = fun(10, 20, 30);
+    for (int i = 0; i < arr.length; i++) {
+        System.out.println(arr[i]);
     }
+}
 
-    public static int[] fun(int a, int b, int c) {
-        int sum = a + b + c;
-        int avg = sum / 3;
-        int[] arr = {sum, avg};
-        return arr;
-    }
+public static int[] fun(int a, int b, int c) {
+    int sum = a + b + c;
+    int avg = sum / 3;
+    int[] arr = {sum, avg};
+    return arr;
+}
 ```
