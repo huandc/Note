@@ -721,7 +721,7 @@ for(初始表达式1 ; 循环条件1 ; 循环条件2) {
 
 ### 方法
 
-- 方法的定义  
+- 方法的定义基本格式  
 
 ```java
 public static void 方法名(){  
@@ -738,3 +738,136 @@ public static void 方法名(){
  3. 方法定义好，要进行方法的[调用]。  
 调用格式: ```方法名称();``
 
+```java
+public static void main(String[] args) {
+        for (int i = 0; i < 5; i++) {
+            print();//調用5次打印
+        }
+    }
+    public static void print() {
+        for (int j = 0; j < 20; j++) {
+            System.out.print("*");//循环打印20次*
+        }
+        System.out.println();//换行
+    }
+```  
+
+* * *
+
+方法其实就是若干语句的功能集合.  
+
+- 参数: 进入方法的数据.  
+- 返回值: 从方法出来的数据.  
+
+完整格式:  
+
+```java
+修饰符 返回值类型 方法名称(参数类型 参数名称, ...){
+    方法体;
+    return 返回值;
+}
+```  
+
+修饰符: 现阶段, `public static`  
+返回值类型: 方法产生的数据结果类型  
+方法名称:　方法名字　小驼峰　　
+参数类型：进入的数据的类型  
+参数名称: 进入方法的数据的变量名  
+方法体: 方法需要做的事,若干行代码  
+`return`: 停止当前方法, 将结果返回  
+返回值: 产生的数据结果  
+**return 后面返回值类型 与方法名的返回值类型对应**  
+
+- 三种调用格式  
+
+1. 单独调用  
+2. 打印调用  
+3. 赋值调用  
+
+```java
+    public static void main(String[] args) {
+        //单独调用
+        sum(10, 20);
+        //打印调用
+        System.out.println(sum(10, 20));
+        //赋值调用
+        int s = sum(10, 20);
+        System.out.println(s);
+    }
+    public static int sum(int a, int b) {
+        return a + b;
+    }
+```
+
+有参数:  小括号有内容,当一个方法需要一个数据条件才能完成认为的时候.  
+无参数: 小括号留空,方法不需要数据条件就能独立完成.  
+
+- 注意事项
+
+1. 方法的定义在类当中,但是不能嵌套定义方法.  
+2. 方法定义后不会执行,只有调用才能执行.  
+3. 有返回值 必须 `return 返回值`  与方法返回值类型对应.  
+4. 对于void 只能写`return`; 不能有返回值.  
+5. 对于方法最后一行的`return`可以省略.  
+6. 一个方法当中可以有多个`return`, 但保证同时只有一个会被执行.  
+
+* * *
+
+- **方法的重载**  
+功能类似,参数列表不一样.  
+**重载(Overload)**  
+多个方法的名称一样,参数列表不一样.  
+
+```java
+public static void main(String[] args) {
+
+    System.out.println(sum(10, 20));
+    System.out.println(sum(10, 20, 30));
+    System.out.println(sum(10, 20, 30, 40));
+}
+
+public static int sum(int a, int b) {
+    return a + b;
+}
+
+public static int sum(int a, double b) {
+    return (int) (a + b);
+}
+
+public static int sum(int a, int b, int c) {
+    return a + b + c;
+}
+
+public static int sum(int a, int b, int c, int d) {
+    return a + b + c + d;
+}
+```  
+
+- 相关  
+
+1. 参数个数不同.  
+2. 参数类型不同.  
+3. 参数的多类型顺序不同.  
+
+- 无关
+
+1. 与参数名称无关.  
+2. 与方法的返回值类型无关.  
+
+### 数组
+
+是一种容器,存放多个数据值.  
+
+1. 数组是一种引用数据类型.  
+2. 数组当中的多个数据类型必须一致.  
+3. 数组的长度在运行期间,不可以改变.  
+
+数组的初始化  
+
+1. 动态初始化(指定长度)  
+2. 静态初始化(指定内容)
+
+```java
+//动态初始化
+数据类型[] 数组名称 = new 数据类型[数组长度];
+```
