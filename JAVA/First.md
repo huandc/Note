@@ -907,3 +907,26 @@ array = {11 , 21 , 31};
 4. 本地方法栈 (Native Method Stack) : 与操作系统相关.  
 5. 寄存器 (pc Register) : 与CPU相关.  
 
+访问数组元素,索引编号不存在,那么发生数组索引越界异常. `ArrayIndexOutOfBoundsException`.  
+空指针异常: 所有的引用类型,都可以赋值为null值,表示其中什么都没有. 数组必须进行new初始化才能使用,如果只是赋值了null,没有new创建,那么将发生空指针异常`NullPointerException`  
+数组一旦创建,程序运行期间,长度不可改变.  
+
+一个方法可以有0、1、多个参数. 不能有多个返回值.  
+如果要返回多个值,使用数组返回.  
+
+```java
+    public static void main(String[] args) {
+        int[] arr = new int[2];
+        arr = fun(10, 20, 30);
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
+    }
+
+    public static int[] fun(int a, int b, int c) {
+        int sum = a + b + c;
+        int avg = sum / 3;
+        int[] arr = {sum, avg};
+        return arr;
+    }
+```
