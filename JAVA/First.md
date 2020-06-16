@@ -1030,8 +1030,8 @@ public static void main(String[] args) {
 ```  
 
 **一个对象内存图**  
-![Demo01](./images/01_Obj_Memory.png)
+![Demo01](images/01_Obj_Memory.PNG)
 
 **两个对象同一个方法**
 
-![Demo02](./images/02_TwoObj_OnewMethod.png)
+![Demo02](images/02_TwoObj_OnewMethod.PNG)
