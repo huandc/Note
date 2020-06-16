@@ -1034,4 +1034,4 @@ public static void main(String[] args) {
 
 **两个对象同一个方法**
 
-![Demo02](images/02_TwoObj_OnewMethod.png)
+![Demo02](./images/02_TwoObj_OnewMethod.png)
