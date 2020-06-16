@@ -930,3 +930,108 @@ public static int[] fun(int a, int b, int c) {
     return arr;
 }
 ```
+
+### 面向对象
+
+面向过程: 实现功能时,处理每个步骤. 强调**过程**  
+面向对象: 实现功能时,不关心具体的步骤.强调**对象**  
+
+```Java
+public static void main(String[] args) {
+    int[] array = {10, 20, 30, 40, 50};
+    //打印格式[10, 20, 30, 40, 50 ]
+    //面向过程
+    System.out.print("[");
+    for (int i = 0; i < array.length; i++) {
+        if (i == array.length - 1) {
+            System.out.print(array[i] + "]");
+        } else {
+            System.out.print(array[i] + ", ");
+        }
+    }
+    //面向对象
+    //找一个JDK提供的toString方法.
+    System.out.println(Arrays.toString(array));
+}
+```  
+
+- 特点: **封装 继承 多态**  
+
+类与对象的关系:  
+
+- **类** 是一组相关属性和行为的集合.一类事物的模板.  
+- **属性**: 状态信息.  
+- **行为**: 动作,能够做什么.  
+
+- **对象** 对象是类的一个实例,具有该类事物的属性和行为.  
+
+类和对象的关系  
+
+- 类是对一类事物的描述,是**抽象**的.  
+- 对象是一类事物的实力,是**具体**的.  
+- **类是对象的模板,对象是类的实体**.  
+
+定义一个类:
+**成员变量**: 对应事物的**属性**.
+
+**成员方法**: 对应事物的**行为**.  
+
+- 注意事项:  
+
+1. 成员变量直接定义在类当中,方法外.  
+2. 成员方法不屑static关键字.  
+
+创建一个对象:  
+
+1. 导包 指出使用的类在什么位置.  
+import 包名称.类名称;
+`import cn.handc.day04.Demo06.Student`  
+对于和当前类属于同一个包,可以不写导包.  
+2. 创建  
+类名称 对象名 = new 类名称();  
+`Student stu = new Student();`  
+3. 使用  
+使用成员变量: 对象名.成员变量  
+使用成员方法: 对项目.成员方法名(参数)  
+
+成员变量未赋值,将会有默认值.  
+
+```java
+public class Phone {
+    //成员变量
+    String brand;
+    double priice;
+    String color;
+    //成员方法
+    public void call(String who){
+        System.out.println("给"+who+"打电话");
+    }
+    public void sendMessage(){
+        System.out.println("群发短信");
+    }
+}
+public static void main(String[] args) {
+    Phone p = new Phone();
+    System.out.println(p.brand);//null
+    System.out.println(p.color);//null
+    System.out.println(p.priice);//0.0
+    System.out.println("***********");
+
+    p.brand="苹果";
+    p.color="黑色";
+    p.priice=1888.88;
+    System.out.println(p.brand);//苹果
+    System.out.println(p.color);//黑色
+    System.out.println(p.priice);//1888.88
+
+    p.call("乔布斯");
+    p.sendMessage();
+}
+```  
+
+**一个对象内存图**
+![Demo01](images/01_Obj_Memory.png)
+
+**两个对象同一个方法**
+
+![Demo02](images/02_TwoObj_OnewMethod.png)
