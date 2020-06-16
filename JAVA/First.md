@@ -1029,7 +1029,7 @@ public static void main(String[] args) {
 }
 ```  
 
-**一个对象内存图**
+**一个对象内存图**  
 ![Demo01](images/01_Obj_Memory.png)
 
 **两个对象同一个方法**
