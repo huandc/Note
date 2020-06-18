@@ -1029,9 +1029,418 @@ public static void main(String[] args) {
 }
 ```  
 
-**一个对象内存图**  
+- **一个对象内存图**  
 ![Demo01](images/01_Obj_Memory.PNG)
 
-**两个对象同一个方法**
+- **两个对象同一个方法**
 
 ![Demo02](images/02_TwoObj_OnewMethod.PNG)
+
+当一个对象作为参数,传递到方法中时,实际上传递进去的是对象的**地址值**.  
+当使用对象类型作为方法的返回值时,返回值就是对象的地址值.  
+
+- **局部变量与成员变量**  
+
+1. 局部变量在方法的内部, 成员变量在方法的外部,直接写在类当中.  
+2. 局部变量 只有方法当中才可以使用, 成员变量在类当中都可以通用.  
+3. 默认值不一样,局部变量没有默认值. 如果要使用,进行手动赋值.    成员变量没有赋值的话有默认值.  
+4. *内存的位置不一样*  
+局部变量: 位于栈内存  方法进栈产生
+成员变量  位于堆内存  对象创建诞生,对象被垃圾回收而消失  
+
+面向对象三大特征:　封装，继承，多态　　
+封装的体现：　　
+
+1. 方法就是一种封装  
+2. 关键字private 也是一种封装  
+
+使用private进行修饰，本类范围内可以访问，超出本类无法使用.  
+
+构造方法时专门用来创建对象的方法, 当我们通过new 创建对象时,就是在调用构造方法.  
+格式:  
+
+```java
+public 类名称(参数类型 参数名称){
+    方法体
+}
+```
+
+- 注意事项:  
+
+1. 构造方法与类名一致.  
+2. 构造方法不写返回值类型.  
+3. 构造方法不能return 一个具体的返回值.  
+4. 如果没有写任何构造方法,编译器将会默认一个构造方法,没有参数.  
+5. 一旦写了至少一个构造方法,那么编译器不再默认.  
+
+一个标准的类(Java Bean)要四个组成部分:  
+**所有的成员变量使用private**  
+**为每个成员变量编写Getter/Setter方法**  
+**无参数的构造方法**  
+**有参数的构造方法**  
+
+### 常用API
+
+- **Scanner** 键盘输入  
+
+```java
+Scanner sc = new Scanner(System.in);
+int i = sc.nextInt();
+```
+
+引用类型的使用步骤:  
+
+1. 导包  `import 包路径 包名称;` 如果使用的类与当前类在同一个包,可以不用写导包.  只有`java.lang`下的内容不需要导包.  
+2. 创建  `类名称 对象名 = new 类名称();`  
+3. 使用  `对象名.成员方法名();`  
+
+```Java
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);  
+    //输入int数字 int num =sc.nextInt();
+    //输入字符串 String str =sc.next();
+    int num =sc.nextInt();
+    System.out.println(num);
+}
+```
+
+- 匿名对象
+只有右边的对象,没有左边的名字和赋值运算符.  
+`new 类名称();`  
+`new Person().name = "张三";`  
+使用建议  
+如果确定有一个对象,只需要使用唯一的一次,就可以使用匿名对象.  
+
+```java
+public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int num = sc.nextInt();
+    //匿名对象的方法
+//        int num = new Scanner(System.in).nextInt();
+//        System.out.println(num);
+    //使用一般方法传入参数
+//        Scanner sc = new Scanner(System.in);
+//        methodParam(sc);
+    //匿名对象做参数的方法
+//        methodParam(new Scanner(System.in));
+    //匿名对象做返回值
+    Scanner sc = methodReturn();
+    int num =sc.nextInt();
+    System.out.println(num);
+
+}
+
+public  static void methodParam(Scanner sc){
+    int num = sc.nextInt();
+    System.out.println(num);
+}
+
+public static Scanner methodReturn(){
+    return new Scanner(System.in);
+}
+```
+
+- **Random** 类  
+用来生成随机数.  
+
+1. 导包 `import java.util.Random;`  
+2. 创建 `Random r = new Random();`  
+3. 使用  `int num = r.nextInt();`  (int 范围内)  
+`int num = r.nextInt(10)` [0,10) 左闭右开区间的整数.  
+
+- **ArrayList**类
+Arraylist的长度可以发生变化.  
+对于ArrayList 来说 <E>代表泛型:表示装在集合中的元素都是统一的类型.  
+泛型只能是**引用类型**,不能是基本类型.  
+`ArrayList<String> List = new ArrayList<>();`  
+对于ArrayList 来说,直接打印的是内容.  
+**常用方法**:  
+
+1. `public boolean add(E e);` 添加元素,雷旭要一致.  
+2. `public E get(int index);` 从集合中获取元素,参数是索引编号,返回值就是对应位置的元素.  
+3. `public E remove(int index);` 从集合中删除元素,参数是索引编号,返回值就是对应位置的元素.  
+4. `public int size();` 获取集合的长度,返回值就是集合中元素的个数.  
+
+```java
+public static void main(String[] args) {
+    ArrayList<String> list = new ArrayList<>();
+    System.out.println(list);
+
+    boolean success = list.add("柳岩");
+    System.out.println(list);
+    System.out.println("添加是否成功 " + success);
+    list.add("高圆圆");
+    list.add("赵又廷");
+    list.add("李小璐");
+    list.add("贾乃亮");
+    System.out.println(list);
+
+    System.out.println("索引2是 " + list.get(2));
+    System.out.println("被删除的人是 " + list.remove(3));
+    System.out.println("长度是 " + list.size());
+}
+```  
+
+如果希望给ArrayList 存基本类型,必须使用基本类型对应的**  
+包装类**  
+基本类型------->包装类(引用类型包装类都位于java.lang包下)  
+byte-------->Byte  
+short------->Short  
+int------->Integer  
+long------->Long  
+float------->Float  
+double------->Double  
+char------->Character  
+boolean------->Boolean  
+`ArrayList<Integer> listB = new ArrayList<>();`  
+
+```java
+public static void main(String[] args) {
+    ArrayList<Student> list = new ArrayList<>();
+    Student stu1 = new Student("迪丽热巴",12);
+    Student stu2 = new Student("古力娜扎",18);
+    Student stu3 = new Student("马尔扎哈",33);
+    list.add(stu1);
+    list.add(stu2);
+    list.add(stu3);
+    list.add(new Student("赵丽颖",11));
+    for (int i = 0; i < list.size(); i++) {
+        System.out.println("姓名: "+list.get(i).getName()+"年龄: "+list.get(i).getAge());
+    }
+}
+```
+
+大集合存储20个随机数字,自定义方法筛选出偶数,放在小集合.  
+
+```java
+public static void main(String[] args) {
+    ArrayList<Integer> listA = new ArrayList<>();
+    ArrayList<Integer> listB = new ArrayList<>();
+    for (int i = 0; i < 20; i++) {
+        listA.add(new Random().nextInt(100));
+    }
+    System.out.println("随机出来的数:" + listA);
+    listB = fliter(listA);
+    System.out.println("筛选出来的: " + listB);
+}
+//筛选方法:筛选出偶数添加到小集合当中.  
+public static ArrayList<Integer> fliter(ArrayList<Integer> list) {
+    ArrayList<Integer> re = new ArrayList<>();
+    for (int i = 0; i < list.size(); i++) {
+        if (list.get(i) % 2 == 0) {
+            re.add(list.get(i));
+        }
+    }
+    return re;
+}
+```  
+
+#### 字符串  
+
+`java.lang.String`类代表字符串  
+程序中所有的双引号字符串,都是`String`类的对象.  
+
+- 特点:  
+
+1. 字符串的内容永不可变. *-*字符串是常量；它们的值在创建之后不能更改* 因为 String 对象是**不可变**的，所以可以共享。例如：  `String str = "abc";`  
+2. 字符串效果上相当于`char[]`字符数组.  但是底层是`byte[]`字节数组.  
+
+创建字符串的3+1种方式. 三种构造方法,一种直接创建.  
+
+1. `public String();` 创建一个空白字符串.  
+2. `public String(char[] array);` 根据字符数组的内容,创建对应字符串.  
+3. `public String(byte[] array);` 根据字节数组的内容,创建对应字符串.  
+4. 直接创建.  `String str = "Hello";`  
+
+```java
+public static void main(String[] args) {
+    //空参构造
+    String str1 = new String();
+    System.out.println("第一个字符串" + str1);//
+    //字符数组
+    char[] charArray = {'A', 'B', 'C'};
+    String str2 = new String(charArray);
+    System.out.println("第二个字符串" + str2);//ABC
+    //字节数组创建字符串
+    byte[] byteArray = {97, 98, 99};
+    String str3 = new String(byteArray);
+    System.out.println("第三个字符串" + str3);//abc
+    String str4 = "Hello";
+    System.out.println("第四个字符串" + str4);//Hello
+}
+```
+
+- 字符串的常量池  
+程序当中直接写的双引号字符串,就在字符串常量池中.  
+对于基本类型来说 ==是进行**数值**比较.  
+对于引用类型来说,==是进行**地址值**比较.  
+
+```java
+public static void main(String[] args) {
+    String str1="abc";
+    String str2="abc";
+    char[] charArray = {'a','b','c'};
+    String str3 = new String(charArray);
+    System.out.println(str1==str2);//true
+    System.out.println(str1==str3);//false
+    System.out.println(str2==str3);//false
+}
+```
+
+双引号引起来的在字符串常量池里, 字符数组创建的字符串是new一个新的字符串对象,不在常量池当中.
+
+-字符串常用方法: 
+
+字符串内容比较:`public boolean equals(Object obj);`参数可以是任何对象.只有参数是字符串并且相同才可以返回true,否则false.(任何对象都可以用Object进行结束)  
+eqals方法具有对称性,`a.equals(b)`和`b.equals(a)`一样.  
+推荐   `"abc".equals(str)`  
+不推荐  `str.equals("abc")` (空指针异常例如str=null时)  
+`public boolean equalsIgnoreCase(String str);`忽略大小写进行比较.  
+
+与获取相关的方法:  
+`public int length();` 获取字符串长度.  
+`public String concat(String str);` 拼接返回新的字符串.  
+`public char charAt();` 获取指定位置的单个字符.  
+`public int indexOf(String str);` 参照字符串首次出现的位置,没有返回-1.  
+
+截取方法:  
+`public String substring(int index);` 从参数的位置,到字符串末尾 返回新字符串.  
+`public String substring(int begin, int end);` 从begin开始到end结束,包含左边,不包含右边.  
+
+转换方法:  
+`public char[] toCharArray();` 字符串拆分为字符数组.  
+`public byte[] getBytes();` 获得当前字符串底层的字符数组.  
+`public String replace(CharSequence oldString, char newString);` 将所有old字符串替换为new字符串.返回结果字符串.  CharSequence 可以接受字符串类型.  
+
+分割字符串的方法:  
+`public String[] split(String regex);` 将字符串分割若干部分.  
+regex参数时一个**正则表达式**,  按照英文"." 进行切割,必须写"//."  
+
+#### static关键字  
+
+一旦用了static 关键字,内容不再属于对象自己,而是属于类,凡是本类的对象,都共享同一份.  
+如果成员变量使用了static 关键字.那么这个成员变量属于类.  
+使用static 修饰了成员方法,那么成了静态方法,不属于对象,而是属于类的.  
+如果没有static 必须先创建对象,才可以通过对象使用方法.  
+对于静态方法来说,可以通过对象名调用,也可以通过类名称调用.  
+静态变量: 类名称.静态变量;  
+静态方法: 类名称.静态方法();  
+
+```java
+public static void main(String[] args) {
+    MyClass mc = new MyClass();
+    mc.method();
+    mc.methodStatic();//正确  不推荐
+    MyClass.methodStatic();//正确 推荐
+}
+```
+
+对于本类当中的静态方法,可以省略类名称.  
+
+1. 静态只能直接访问静态,不能直接访问非静态.  (内存中**先**有静态,**后**有非静态内容)  
+
+```java
+public class MyClass {
+    int num;//成员变量
+    static int numStatic;//静态变量
+    //成员方法可以访问成员变量和静态变量
+    public void method() {
+        System.out.println("这是一个普通的成员方法. ");
+        System.out.println(num);
+        System.out.println(numStatic);
+    }
+    //静态方法可以访问静态 不能访问非静态
+    public static void methodStatic() {
+        System.out.println("这是一个静态方法");
+        System.out.println(numStatic);
+//        System.out.println(num);//错误写法
+    }
+}
+```  
+
+2. 静态方法中不能用this, this代表当前对象,谁调用this代表谁.  
+
+![Demo03](images/03-static.PNG)
+
+静态代码块:  当第一次用到本类时,静态代码块执行唯一的异常.  静态代码块比构造方法先执行.  
+用处: 用来一次性的堆静态成员变量进行赋值.  
+
+```java
+public class 类名称{
+    static {
+            //静态代码块内容
+        }
+}
+```  
+
+#### Arrays
+
+是一个数组相关的工具类,里面提供大量静态方法,用来事项数组厂家的操作.  
+`public static String toString(数组);`将参数数组变成字符串  
+`public static void sort(数组)` 按照默认升序堆数组进行排序.  
+如果数值,默认按照升序从小到大,如果字符串默认按照字母升序.  
+如果自定义类型,那么自定义的类需要有`Comparable`或者`Comparator`接口的支持.  
+```java
+public static void main(String[] args) {
+    String str="";
+    Random r = new Random();
+    //随机生成字符串,
+    for (int i = 0; i < r.nextInt(100); i++) {
+        str+=(char)(r.nextInt(25)+65);
+    }
+    System.out.println(str);
+    //转成char数组
+    char[] chars = str.toCharArray();
+    //数组排序
+    Arrays.sort(chars);
+    System.out.println(chars);
+    //倒序输出
+    for (int i = chars.length - 1; i >= 0; i--) {
+        System.out.print(chars[i]+" ");
+    }
+```
+
+#### Math类
+
+完成与数学运算相关的操作
+
+`public static double abs(double num);`获取绝对值  
+`public static double ceil(double num);`向上取整  
+`public static double floor(double num);`向下取整  
+`public static long round(double num);`四舍五入  
+ `Math.PI` 近似圆周率.  
+
+### 面向对象-继承性
+
+继承时多态的前提,没有继承就每天多态.  
+![Demo04](images/04-jicheng.PNG)
+
+在继承的关系中,"子类就是一个符类". 子类可以当作父类来看.  父类时员工,子类时讲师.那么"讲师是一个员工" 关系: is-a.
+定义父类`public class 父类名称{  }`  
+定义子类`public class 子类名称 extends 父类名称{   }`  
+在父子类继承关系中,如果成员变量充满,则创建子类对象时,访问规则:  
+直接通过子类对象访问成员变量.  
+等号左边是谁,优先用谁,没有向上找...  
+间接通过成员方法访问成员变量.  
+方法属于谁,优先用谁,没有则向上找...  
+局部变量:   直接写  
+本类的成员变量:  this.成员变量名  
+父类的成员变量:  super.成员变量名  
+
+在父子类继承关系中国,创建子类对象,访问成员方法:  
+创建对象是谁,优先用谁.如果没有向上找.  
+**注意**  无论是成员方法还是成员变量,如果没有向上找父类.  
+方法的重写 Override  
+在继承关系中,**方法名称**一样,**参数列表**也一样.  
+特点: 创建的子类对象,优先用子类方法.  
+`@Override`写在方法前,用来检测是不是有效的正确覆盖.  
+这个注解 只要满足要求也可以.  
+子类方法的返回值必须**小于等于**父类方法的返回值范围.  
+子类方法的权限必须**大于等于**父类方法的权限.  
+`public > protected > (default) > private`  
+继承中构造方法  
+
+1. 子类构造方法当中有一个默认`super();`调用.所有先调用父类构造,再执行子类构造.  
+2. 子类构造可以通过super关键字调用父类重载构造.  
+`super(参数)`  
+3. super的父类构造调用,必须是子类构造语句第一句.  
