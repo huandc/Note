@@ -1360,7 +1360,7 @@ public class MyClass {
 
 2. 静态方法中不能用this, this代表当前对象,谁调用this代表谁.  
 
-![Demo03](images/03-static.PNG)
+![Demo03](images/03-Static.png)
 
 静态代码块:  当第一次用到本类时,静态代码块执行唯一的异常.  静态代码块比构造方法先执行.  
 用处: 用来一次性的堆静态成员变量进行赋值.  
@@ -1413,7 +1413,7 @@ public static void main(String[] args) {
 ### 面向对象-继承性
 
 继承时多态的前提,没有继承就每天多态.  
-![Demo04](images/04-jicheng.PNG)
+![Demo04](images/04-jicheng.png)
 
 在继承的关系中,"子类就是一个符类". 子类可以当作父类来看.  父类时员工,子类时讲师.那么"讲师是一个员工" 关系: is-a.
 定义父类`public class 父类名称{  }`  
