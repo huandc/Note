@@ -1444,3 +1444,210 @@ public static void main(String[] args) {
 2. 子类构造可以通过super关键字调用父类重载构造.  
 `super(参数)`  
 3. super的父类构造调用,必须是子类构造语句第一句.  
+
+```java
+public class Fu {
+    public Fu(int num) {
+        System.out.println("父类构造方法" + num);
+    }
+
+    public Fu() {
+        System.out.println("父类构造方法");
+    }
+}
+public class Zi extends Fu {
+    public Zi(int num) {
+        super(num);
+        System.out.println("子类构造方法"+num);
+    }
+
+    public Zi() {
+        super();
+        System.out.println("子类构造方法");
+    }
+}
+```
+
+**super**关键字  
+在子类成员方法中,访问父类的成员变量.  
+在子类的成员方法中,访问父类的成员方法.  
+在子类的构造方法中,访问父类的构造方法.  
+
+**this**关键字  
+在本类成员方法中,访问本类的成员变量.  
+在本类成员方法中,访问本类的另一个成员方法.  
+在本类的构造方法中,访问另一个构造方法.  
+(本类的无参构造,调用有参构造)this()调用,必须是构造方法的第一个语句.  
+
+```java
+public class Zi extends Fu {
+    int num = 10;
+    public Zi(int num) {
+        this.num = num;
+    }
+
+    public Zi() {
+        this(123);
+    }
+}
+```
+
+继承的特征:  
+Java语言是单继承的.  
+一个类的直接父类只能有一个.  
+Java语言可以多级继承.  
+一个子类的直接父类是唯一的,但是一个父类可以有很多子类.  
+
+抽象的概念:  
+如果父类当中的方法不确定不和进行{}方法体实现,那么就是一个**抽象方法**  
+加上`abstract` 去掉大括号.  
+抽象类:抽象方法所在的类,必须是抽象类. class 之前加上`abstract`  
+
+```java
+public abstract class Animal {
+    //抽象方法
+     public abstract void eat();
+     public void normalMethod(){
+         System.out.println("普通成员方法");
+     }
+}
+```
+
+1. 不能直接创建抽象类对象.  
+2. 使用子类继承抽象类.  
+3. 子类必须覆盖重写抽象父类的所有抽象方法.  
+4. 创建子类对象进行使用.  
+
+```java
+public class Cat extends Animal{
+    @Override
+    public void eat() {
+        System.out.println("猫吃鱼");
+    }
+}
+```
+
+1. 抽象类**不能创建对象**,只能厂家非抽象子类的对象.  
+
+>理解:假设创建了抽象类的对象,调用抽象的方法,而抽象方法没有具体的方法体,没有意义.  
+
+2. 抽象类中,可以**有构造方法**,是供子类创建对象时,初始化父类成员使用的.  
+
+>理解:子类的构造方法中,有默认的 super(),需要访问父类构造方法.  
+
+3. 抽象类中,**不一定包含抽象方法**,但是有抽象方法的类必定是抽象类.  
+
+>理解:未包含抽象方法的抽象类,目的就是不想让调用者创建该类对象,通常用于某些特殊的类结构设计.  
+
+4. 抽象类的子类,必须**重写抽象父类中所有的抽象方法**,否则,编译无法通过而报错。除非该子类也是抽象类.  
+
+>理解:假设不重写所有抽象方法,则类中可能包含抽象方法。那么创建对象后,调用抽象的方法,没有意义.  
+
+### **发红包**实现
+
+User类  
+
+```java
+public abstract class Users {
+    private String name;
+    private int count;
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getCount() {
+        return count;
+    }
+    public void setCount(int count) {
+        this.count = count;
+    }
+    public Users(String name, int count) {
+        this.name = name;
+        this.count = count;
+    }
+    public abstract void show();
+}
+```
+
+Master类  继承User类  
+
+```java
+public class Master extends Users {
+    public Master(String name, int count) {
+        super(name, count);
+    }
+
+    @Override
+    public void show() {
+        System.out.println(this.getName() + "余额: " + this.getCount());
+    }
+
+    public ArrayList<Integer> send(int totalMoney, int count) {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        int leftMoney = super.getCount();//当前余额
+        if(totalMoney > leftMoney){
+            System.out.println("余额不足只有: "+super.getName());
+            return arrayList;
+        }
+        this.setCount(this.getCount() - totalMoney);
+        int avg = totalMoney / count;
+        int mod = totalMoney%count;
+        for (int i = 0; i < count-1; i++) {
+            arrayList.add(avg);
+        }
+        arrayList.add(avg+mod);
+        return arrayList;
+    }
+}
+```
+
+Member类  继承User类  
+
+```java
+public class Member extends Users {
+    public Member(String name, int count) {
+        super(name, count);
+    }
+
+    @Override
+    public void show() {
+        System.out.println(this.getName() + "余额: " + this.getCount());
+    }
+
+    public void receive(ArrayList<Integer> arrayList) {
+        Random r = new Random();
+        this.setCount(this.getCount() + arrayList.remove(r.nextInt(arrayList.size())));
+    }
+}
+```
+
+```java
+public static void main(String[] args) {
+    //创建对象 一个群主 4个成员
+    Master master = new Master("群主", 1000);
+    Member[] member = new Member[4];
+    for (int i = 0; i < 4; i++) {
+        member[i] = new Member("成员" + i, 10 * i);
+    }
+    //输出信息
+    master.show();
+    for (int i = 0; i < 4; i++) {
+        member[i].show();
+    }
+    //群主发红包
+    ArrayList<Integer> arrayList = master.send(400, 4);
+    int len = arrayList.size();
+    //成员接受红包
+    for (int i = 0; i < len; i++) {
+        member[i].receive(arrayList);
+    }
+
+    master.show();
+    for (int i = 0; i < 4; i++) {
+        member[i].show();
+    }
+}
+```
