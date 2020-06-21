@@ -2048,8 +2048,8 @@ public static void main(String[] args) {
 - 成员内部类 ：定义在类中方法外的类。
 
 ```java
-class 外部类 {  
-   class 内部类{  
+修饰符 class 外部类 {  
+   修饰符 class 内部类{  
     //
    }
 }
@@ -2058,9 +2058,12 @@ class 外部类 {  
 在描述事物时，若一个事物内部还包含其他事物，就可以使用内部类这种结构。比如，汽车类 Car 中包含发动机 类 Engine ，这时， Engine 就可以使用内部类来描述，定义在成员位置。  
 
 **访问特点**
+内用完,随意访问.外用内,借助内部类对象.  
 
 - 内部类可以直接访问外部类的成员，包括私有成员。  
+- 外部类当中使用内部类,main使用外部类方法.  
 - 外部类要访问内部类的成员，必须要建立内部类的对象。  
+创建内部类对象:  
 `外部类名.内部类名 对象名 = new 外部类型().new 内部类型()；`  
 定义类：
 
@@ -2093,10 +2096,59 @@ public class Body {//外部类
 ```java
 public static void main(String[] args) {
     Body body =new Body();
+    //通过外部类对象调用外部类方法,间接使用内部类Heart
     body.methodBody();
+    //使用内部类方法要通过内部类对象
     Body.Heart heart = new Body().new Heart();
     heart.beat();
 }
-
 ```
+
+>内部类仍然是一个独立的类，在编译之后会内部类会被编译成独立的.class文件，但是前面冠以外部类的类名 和$符号  
+
+如果出现了重名,`外部类名称.this.外部类成员变量`.  
+
+```java
+public class Outer {
+    int num = 10;//外部类成员变量
+
+    public class Inner {
+        int num = 20;//内部类成员变量
+
+        public void methodInner() {
+            int num = 30;//内部类方法的局部变量
+            System.out.println(num);//局部变量
+            System.out.println(this.num);//内部类成员变量
+            System.out.println(Outer.this.num);//外部类成员变量
+        }
+    }
+}
+```
+
+如果一个类是定义再一个方法内部的,那么就是一个局本部内部类.  
+
+```java
+修饰符 class 外部类名称{
+    修饰符 返回值类型 外部类方法名称(参数列表){
+        class 局部内部类名称{
+            //....
+        }
+    }
+}
+```
+
+public  > protect  > (default)  > private
+
+1. 外部类 public /(default)  
+2. 成员内部类 public /protect / (default) /private  
+3. 局部内部类 什么都不能写  
+
+局部内部类如果希望访问所在方法的局部变量,那么这俄格局部变量必须是**有效final的**.  
+只要局部变量事实不变,final可以省略.  
+原因:  
+
+1. new出来的对象再堆内存中,  
+2. 局部变量跟着方法再栈内存当中.  
+3. 方法运行结束后,立刻出栈,局部变量就会消失.  
+4. new出来的对象会持续存在,知道垃圾回收.  
 
