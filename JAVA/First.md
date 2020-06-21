@@ -1984,11 +1984,7 @@ public class Computer {
     public void useDevice(UsbInterface usbInterface) {
         if (usbInterface instanceof Mouse) {
             //使用鼠标
-<<<<<<< HEAD
             Mouse mouse = (Mouse)usbInterface;
-=======
-            Mouse mouse = new Mouse();
->>>>>>> bd6e0970117833945b39ac0699a7fd2afad12328
             mouse.openDevice();
             mouse.clickMouse();
             mouse.closeDevice();
@@ -2008,25 +2004,16 @@ public static void main(String[] args) {
     Computer computer = new Computer();
     computer.startComputer();
     //使用鼠标
-<<<<<<< HEAD
     KeyBroad keyBroad = (KeyBroad)usbInterface;
     computer.useDevice(mouse);//多态写法
     //computer.useDevice(new Mouse());//匿名对象
     //使用键盘
     KeyBroad keyBroad = new KeyBroad();
     computer.useDevice(keyBroad);//向上转型
-=======
-    Mouse mouse = new Mouse();
-    computer.useDevice(mouse);
-    //使用键盘
-    KeyBroad keyBroad = new KeyBroad();
-    computer.useDevice(keyBroad);
->>>>>>> bd6e0970117833945b39ac0699a7fd2afad12328
     computer.shutdown();
 }
 ```
 
-<<<<<<< HEAD
 ### final关键字
 
 代表最终的,不可改变的.  
@@ -2055,5 +2042,60 @@ public static void main(String[] args) {
 |不同包的无关类|√|-----|------|--------|
 
 ### 内部类  
-=======
->>>>>>> bd6e0970117833945b39ac0699a7fd2afad12328
+
+将一个类A定义在另一个类B里面，里面的那个类A就称为内部类，B则称为外部类.  
+
+- 成员内部类 ：定义在类中方法外的类。
+
+```java
+class 外部类 {  
+   class 内部类{  
+    //
+   }
+}
+```  
+
+在描述事物时，若一个事物内部还包含其他事物，就可以使用内部类这种结构。比如，汽车类 Car 中包含发动机 类 Engine ，这时， Engine 就可以使用内部类来描述，定义在成员位置。  
+
+**访问特点**
+
+- 内部类可以直接访问外部类的成员，包括私有成员。  
+- 外部类要访问内部类的成员，必须要建立内部类的对象。  
+`外部类名.内部类名 对象名 = new 外部类型().new 内部类型()；`  
+定义类：
+
+```java
+public class Body {//外部类
+    private String name;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public class Heart{//内部类
+        int age = 18;
+        public void beat(){//内部类方法
+            System.out.println("心脏跳动");
+            System.out.println("我是"+name);
+        }
+    }
+    public void methodBody(){//外部类方法
+        Heart heart =new Heart();
+        System.out.println("外部类的方法");
+        heart.beat();
+    }
+}
+```
+
+测试类:  
+
+```java
+public static void main(String[] args) {
+    Body body =new Body();
+    body.methodBody();
+    Body.Heart heart = new Body().new Heart();
+    heart.beat();
+}
+
+```
