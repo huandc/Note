@@ -1651,3 +1651,365 @@ public static void main(String[] args) {
     }
 }
 ```
+
+### 接口
+
+接口就是多个类的公共规范,是一种引用数据类型.  
+接口的定义: `public interface 接口名称{  接口内容 }`  
+ 换成了interface之后,编译生成的字节码文件依然是:.java--> .class  
+Java7接口可以包括: **常量** **抽象方法**  
+Java8 额外包括 **默认方法**  **静态方法**
+Java9 额外包括 **私有方法**  
+
+接口的抽象方法:  
+在任何版本Java中 接口都可以定义抽象方法.  
+接口当中的抽象方法 必须是 `public abstract`  
+这两个关键字修饰符,可以选择性省略.  
+
+接口使用步骤.  
+
+1. 不能直接使用,必须有一个**实现类实现**接口.  
+格式 `public class 实现类名称 implement 接口名称{  内容}`  
+2. 接口的实现类必须覆盖重写接口中所有的抽象方法.  
+去掉abstract 关键字, 加上方法体.  
+3. 创建实现类的对象.  
+
+```java
+//接口
+public interface MyInterfaceAbstract {
+    //这是一个抽象方法.
+    public abstract void methodAbs1();
+    //这也是抽象方法
+    void methodAbs2();
+    public void methodAbs3();
+
+}
+//实现类
+public class MyInterfaceAbstractImpl implements MyInterfaceAbstract {
+    @Override
+    public void methodAbs1() {
+        System.out.println("methodAbs1");
+    }
+    @Override
+    public void methodAbs2() {
+        System.out.println("methodAbs2");
+    }
+    @Override
+    public void methodAbs3() {
+        System.out.println("methodAbs3");
+    }
+}
+//使用
+public static void main(String[] args) {
+    MyInterfaceAbstractImpl my = new MyInterfaceAbstractImpl();
+    my.methodAbs1();
+    my.methodAbs2();
+    my.methodAbs3();
+}
+```
+
+如果实现类没有覆盖重写接口中的所有抽象方法,那么这个实现类自己必须是抽象类.  
+
+Java8接口允许默认方法:  
+`public default 返回值类型 方法名称(参数列表){ 方法体 }`  
+接口当中的默认方法可以解决接口升级的问题.  
+当升级接口时,新添加的方法,改成默认方法. 默认方法会被实现类继承下去.  
+接口的默认方法,可以被接口实现类对象**直接调用**,也可以被接口实现类进行**覆盖重写**.  
+
+```java
+public interface MyInterfaceDefault {
+    //抽象方法
+    public abstract void methodAbs();
+    public default void methodAbs2(){
+        System.out.println("新添加的默认方法");
+    }
+}
+
+public static void main(String[] args) {
+    //创建实现类对象
+    MyInterfacedefaultA myInterfacedefaultA = new MyInterfacedefaultA();
+    myInterfacedefaultA.methodAbs();//调用抽象方法,实际调用实现类的重写方法
+    myInterfacedefaultA.methodAbs2();//调用默认方法被实现类继承下来的
+}
+```
+
+Java8支持接口静态方法定义:  
+`public static 返回值类型 方法名称(参数列表){ 方法体 }`  
+接口静态方法使用:  
+不能通过接口实现的对象调用接口当中的静态方法.  
+`接口名称.静态方法名();`  
+
+Java9支持接口的私有方法:  
+我们需要抽取一个公共方法,用来解决两个默认方法直接重复代码的问题.  
+但是这个共有方法,不应该让实现类使用,应该时私有化.  
+
+1. 普通私有方法:解决多个默认方法重复代码问题.  
+`private 返回值类型 方法名称(参数列表){ 方法体 }`  
+2. 静态私有方法:解决多个静态方法直接重复代码问题.  
+`private static 返回值类型 方法名称(参数列表){ 方法体 }`  
+
+接口当中也可以定义**成员变量** 必须使用`public static final`三个关键字使用.效果上看其实是接口的**常量**.  
+`public static final 数据类型 常量名称 = 数据值.`  
+
+```java
+public interface MyInterfaceConst {
+    //这是一个常量,一旦赋值,不可修改.
+    //通过接口名称调用.
+    //一旦使用final 进行修饰,说明不可变.
+    //接口的常量可以省略以上.默认存在.
+    public static final int NUM_OF_MY_CLASS = 10;
+}
+
+```
+
+1. 接口的常量必须进行赋值.  
+2. 接口常量名称使用完全大写,下划线进行分割.  
+使用: `System.out.println(MyInterfaceConst.NUM_OF_MY_CLASS);`  
+
+总结:  
+成员变量其实是常量 ,格式:  `[public] [static] [final] 数据类型 常量名称 = 数据值.`  
+常量必须赋值,一旦赋值不能改变,名称完全大写下划线分割.  
+
+接口中最重要的是抽象方法,格式: `[public] [abstract] 返回值类型 方法名称(参数列表);`  
+实现类必须覆盖重写接口的所有抽象方法,除非实现类是抽象类.  
+
+接口默认方法,格式: `[public] default 返回值类型 方法名称(参数列表){ 方法体 }`  
+默认方法也可以被覆盖重写  
+
+接口静态方法,格式: `[public] static 返回值类型 方法名称(参数列表){ 方法体 }`  
+应该通过接口名称调用,不能通过实现类调用.  
+
+接口私有方法,普通私有方法:解决多个默认方法重复代码问题.  
+`private 返回值类型 方法名称(参数列表){ 方法体 }`  
+ 静态私有方法:解决多个静态方法直接重复代码问题.  
+`private static 返回值类型 方法名称(参数列表){ 方法体 }`  
+private的方法,只有接口自己调用,不能被实现类调用.  
+
+应该注意:  
+
+1. 接口没有静态代码块或者构造方法的.  
+2. 一个类的直接父类是唯一的,但是一个类可以同时实现多个接口.  
+`public class MyIntrefaceImpl implements MyInterfaceA,MyInterfaceA{ 覆盖重写所有抽象方法  }`  
+3. 如果实现类所实现的多个接口当中存在重复的抽象方法,那么覆盖一次即可.  
+4. 如果实现类没有覆盖重写所有接口的所有抽象方法,那么实现类要是抽象类.  
+5. 如果实现类多个接口当中,存在重复的默认方法, 那么实现类一定要对重复的默认方法进行覆盖重写.  
+6. 一个类如果直接父类当中的方法,与接口当中的默认方法产生冲突,优先使用父类的方法.  
+
+**MyInterfaceA**接口  
+
+```java
+public interface MyInterfaceA {
+    public abstract void methodA();
+    public abstract void methodABs();
+    public default void methodDefault(){
+        System.out.println("A的默认方法");
+    }
+}
+```
+
+**MyInterfaceB**接口  
+
+```java
+public interface MyInterfaceB {
+    public abstract void methodB();
+    public abstract void methodABs();
+    public default void methodDefault(){
+        System.out.println("A的默认方法");
+    }
+}
+```
+
+**MyInterfaceImpl**类 实现MyInterfaceA接口  MyInterfaceB接口  
+
+```java
+public class MyInterfaceImpl implements MyInterfaceA,MyInterfaceB{
+    @Override
+    public void methodA() {
+        System.out.println("覆盖重新A");
+    }
+    @Override
+    public void methodABs() {
+        System.out.println("覆盖重写了AB的");
+    }
+    @Override
+    public void methodDefault() {
+        System.out.println("覆盖重写冲突的默认方法");
+    }
+    @Override
+    public void methodB() {
+        System.out.println("覆盖重写B");
+    }
+}
+```
+
+**main**使用  
+
+```java
+public static void main(String[] args) {
+    MyInterfaceImpl myInterface = new MyInterfaceImpl();
+    myInterface.methodA();
+    myInterface.methodB();
+    myInterface.methodABs();
+    myInterface.methodDefault();
+}
+```
+
+类与接口的关系:  
+
+1. 类与类直接是单继承的,直接父类只有一个.  
+2. 类与接口之间是多实现的,一个类可以实现多个接口.  
+3. 接口与接口之间是多继承的.  
+
+多个接口的抽象方法重复,没关系,实现一个.  
+多个接口的默认方法如果重复,呢么子接口必须进行默认方法 的覆盖重新,**带着default关键字**  
+
+```java
+//接口A有两个抽象方法methodA() cpmmon()
+public interface MyInterfaceA {
+    public abstract void methodA();
+    public abstract void common();
+}
+```
+
+```java
+//接口B有两个抽象方法methodB() cpmmon()
+public interface MyInterfaceA {
+    public abstract void methodB();
+    public abstract void common();
+}
+```
+
+```java
+//接口继承接口A  接口B 而且有一个抽象方法method()
+//子接口共有四个抽象方法,继承A的methodA()和继承B的methodB() 来自AB的common() 本身的method()
+public interface MyInterface extends MyInterfaceA,MyInterfaceB{
+    public abstract void method();
+}
+```
+
+### 多态  
+
+extends继承或者implements实现,是多态性的前提.  
+代码当中体现多态就是:父类引用指向子类对象.  
+`父类名称 对象名 = new 子类名称();`  
+`接口名称 对象名 = new 实现类名称();`  
+多态中成员变量  
+访问成员变量方法:  
+1.直接通过对象名称访问成员变量. 看等号左侧是谁,优先向上.  
+2.间接通过成员方法访问成员变量. 方法属于谁优先用谁,没有向上.  
+多态中成员方法的访问:  
+new 的是谁 就优先用谁. 没有向上找.  
+**成员变量**:编译看左边,运行看左边.  
+**成员方法**:编译看左边,运行看右边.  
+
+使用多态的好处:  
+
+![Demo05](images/05-multi.png)  
+
+1. 对象的向上转型,其实就是多态:  
+格式: `父类名称 对象名 = new 子类名称();`             `Animal anmimal = new Cat();`  
+含义:右侧创建一个子类对象,把他当作父类来看待使用.           创建了一只猫,当作动物看待.  
+**向上转型一定是安全的**,从小范围转向了大范围.  
+
+> 类似于 double num = 100;  int------>double 自动类型转换.  
+问题: 一旦向上转型为父类,那么无法调用子类特有的内容.  
+
+2. 对象的向下转型,其实是一个**还原**的动作.  
+格式: `子类名称 对象名 = (子类名称) 父类对象;`  
+含义: 将父类对象,**还原**成为本类的子类对象.  
+`Animal anmimal = new Cat();`本来是猫,向上转型成为动物  
+`Cat Cat = (Cat)animal;`本类是猫,被向上成动物,还原回来成为本来的猫.  
+注意:  
+a. 必须保证对象本来创建的是猫,才能向下转型成猫.  
+b. 如果本来不是猫,非要向下转型成猫,就会报错.  
+如何判断:  对象 instanceof 类型  (得到一个boolean值)也就是判断前面的对象能不能当后面类型的实例.  
+
+Usb 接口
+
+```java
+public interface UsbInterface {
+    public abstract void openDevice();//打开设备
+    public abstract void closeDevice();//关闭设备
+}
+```
+
+鼠标实现Usb接口
+
+```java
+public class Mouse implements UsbInterface {
+    @Override
+    public void openDevice() {
+        System.out.println("打开鼠标设备");
+    }
+    @Override
+    public void closeDevice() {
+        System.out.println("关闭鼠标设备");
+    }
+    public void clickMouse(){
+        System.out.println("点击鼠标");
+    }
+}
+```
+
+键盘实现Usb接口
+
+```java
+public class KeyBroad implements UsbInterface {
+    @Override
+    public void openDevice() {
+        System.out.println("打开键盘设备");
+    }
+    @Override
+    public void closeDevice() {
+        System.out.println("关闭键盘设备");
+    }
+    public void clickKeyBroad(){
+        System.out.println("敲击键盘");
+    }
+}
+```
+
+computer 电脑类
+
+```java
+public class Computer {
+    public void startComputer() {
+        System.out.println("开机");
+    }
+
+    public void shutdown() {
+        System.out.println("关机");
+    }
+
+    public void useDevice(UsbInterface usbInterface) {
+        if (usbInterface instanceof Mouse) {
+            //使用鼠标
+            Mouse mouse = new Mouse();
+            mouse.openDevice();
+            mouse.clickMouse();
+            mouse.closeDevice();
+        } else if (usbInterface instanceof KeyBroad) {
+            //使用键盘
+            KeyBroad keyBroad = new KeyBroad();
+            keyBroad.openDevice();
+            keyBroad.clickKeyBroad();
+            keyBroad.closeDevice();
+        }
+    }
+}
+```
+
+```java
+public static void main(String[] args) {
+    Computer computer = new Computer();
+    computer.startComputer();
+    //使用鼠标
+    Mouse mouse = new Mouse();
+    computer.useDevice(mouse);
+    //使用键盘
+    KeyBroad keyBroad = new KeyBroad();
+    computer.useDevice(keyBroad);
+    computer.shutdown();
+}
+```
+
