@@ -1984,7 +1984,11 @@ public class Computer {
     public void useDevice(UsbInterface usbInterface) {
         if (usbInterface instanceof Mouse) {
             //使用鼠标
+<<<<<<< HEAD
             Mouse mouse = (Mouse)usbInterface;
+=======
+            Mouse mouse = new Mouse();
+>>>>>>> bd6e0970117833945b39ac0699a7fd2afad12328
             mouse.openDevice();
             mouse.clickMouse();
             mouse.closeDevice();
@@ -2004,16 +2008,25 @@ public static void main(String[] args) {
     Computer computer = new Computer();
     computer.startComputer();
     //使用鼠标
+<<<<<<< HEAD
     KeyBroad keyBroad = (KeyBroad)usbInterface;
     computer.useDevice(mouse);//多态写法
     //computer.useDevice(new Mouse());//匿名对象
     //使用键盘
     KeyBroad keyBroad = new KeyBroad();
     computer.useDevice(keyBroad);//向上转型
+=======
+    Mouse mouse = new Mouse();
+    computer.useDevice(mouse);
+    //使用键盘
+    KeyBroad keyBroad = new KeyBroad();
+    computer.useDevice(keyBroad);
+>>>>>>> bd6e0970117833945b39ac0699a7fd2afad12328
     computer.shutdown();
 }
 ```
 
+<<<<<<< HEAD
 ### final关键字
 
 代表最终的,不可改变的.  
@@ -2042,3 +2055,5 @@ public static void main(String[] args) {
 |不同包的无关类|√|-----|------|--------|
 
 ### 内部类  
+=======
+>>>>>>> bd6e0970117833945b39ac0699a7fd2afad12328
