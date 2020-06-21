@@ -2137,7 +2137,7 @@ public class Outer {
 }
 ```
 
-public  > protect  > (default)  > private
+public  > protect  > (default)  > private  
 
 1. 外部类 public /(default)  
 2. 成员内部类 public /protect / (default) /private  
