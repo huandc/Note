@@ -2143,7 +2143,7 @@ public  > protect  > (default)  > private
 2. 成员内部类 public /protect / (default) /private  
 3. 局部内部类 什么都不能写  
 
-局部内部类如果希望访问所在方法的局部变量,那么这俄格局部变量必须是**有效final的**.  
+局部内部类如果希望访问所在方法的局部变量,那么这个局部变量必须是**有效final的**.  
 只要局部变量事实不变,final可以省略.  
 原因:  
 
@@ -2152,3 +2152,48 @@ public  > protect  > (default)  > private
 3. 方法运行结束后,立刻出栈,局部变量就会消失.  
 4. new出来的对象会持续存在,知道垃圾回收.  
 
+**匿名内部类** 
+
+如果接口的实现类,(或者父类的子类)只需要使用唯一的一次,那么这种情况就可以省略该类的定义,改为使用**匿名内部类**.  
+
+```java
+接口名称 对象名 = new 接口名称(){
+    //覆盖重写所有抽象方法.  
+};
+```
+
+```java
+public static void main(String[] args) {
+//        MyInterface  myInterface =  new MyInterfaceImpl();
+//        myInterface.method();
+
+    MyInterface some = new MyInterface(){
+        //匿名内部类
+        @Override
+        public void method() {
+            System.out.println("匿名内部类实现方法1");
+        }
+    };
+    some.method();
+    //使用匿名内部类,而且省略了对象名称
+    new MyInterface(){
+        @Override
+        public void method() {
+            System.out.println("匿名内部类实现方法2");
+        }
+    }.method();
+}
+```
+
+对`new 接口名称(){......}`格式解析:  
+
+1. new代表创建对象的动作.  
+2. 接口名称就是匿名内部类需要实现那个接口.  
+3. {...} 匿名内部类的内容.  
+
+注意:  
+
+1. 匿名内部类,在创建对象时,只能使用唯一一次.  
+2. 匿名对象,在**调用**方法的时候只能调用唯一一次,如果希望同一个对象调用多次那么必须给对象起个名字.  
+3. 匿名内部类时省略了**实现类/子类** ,匿名对象省略了**对象名称**.  
+**(匿名内部类和匿名对象不是一回事)**  
