@@ -84,8 +84,9 @@ public static void main(String[] args) {
 `String format(Date date)` 按照指定模式将Date日期,格式化为符合模式的字符串.  
 `Date parse(String source)` 把符合模式的字符串,解析为Date日期.  
 `public SimpleDateFormat(String pattern)`用给定的模式和默认语言环境的日期格式符号构造 SimpleDateFormat。  
-参数**pattern** 指定模式:  
-| 标识字母（区分大小写） | 含义   |
+参数**pattern** 指定模式: 
+
+| 标识字母（区分大小写） | 含义  |
 | ----------- | ---- |
 | y           | 年    |
 | M           | 月    |
@@ -93,3 +94,27 @@ public static void main(String[] args) {
 | H           | 时    |
 | m           | 分    |
 | s           | 秒    |
+写对应的模式,会将模式替换为对应的日期和时间.  
+
+```java
+package cn.handc.day12.demo02;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Demo03DateFormat {
+    public static void main(String[] args) throws ParseException {
+        //SimpleDateFormat pattern对应格式YYYY.MM.DD-HH.MM.ss
+        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY.MM.DD-HH.MM.ss");
+        Date date = new Date();
+        //将date格式化为符合模式的字符串
+        String str = dateFormat.format(date);
+        System.out.println(date);
+        System.out.println(str);
+        
+        Date date2 = dateFormat.parse("1988.01.01-12.33.21");
+        System.out.println(date2);
+    }
+}
+```
