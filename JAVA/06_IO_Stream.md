@@ -1281,7 +1281,7 @@ Serialized data is saved
 
 ## 3.3 ObjectInputStream类
 
-ObjectInputStream反序列化流，将之前使用ObjectOutputStream序列化的原始数据恢复为对象。 
+ObjectInputStream反序列化流，将之前使用ObjectOutputStream序列化的原始数据恢复为对象。
 
 ### 构造方法
 
