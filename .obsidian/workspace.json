@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "jenkins.md",
+                "file": "auto/定时任务.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "jenkins.md",
+                "file": "auto/定时任务.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "jenkins.md",
+                "file": "auto/定时任务.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "jenkins.md"
+                "file": "auto/定时任务.md"
               }
             }
           }
@@ -148,7 +148,10 @@
   },
   "active": "b6e1cef4f8fcdb59",
   "lastOpenFiles": [
+<<<<<<< Updated upstream
     "auto/定时任务.md",
+=======
+>>>>>>> Stashed changes
     "jenkins.md",
     "Pasted image 20230207104319.png",
     "Jenkins.md",
