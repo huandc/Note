@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "e973cc5c2d978d88",
+        "id": "eb11952cbafbcec7",
         "type": "tabs",
         "children": [
           {
-            "id": "3312d4e3dd75edd2",
+            "id": "b6e1cef4f8fcdb59",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -146,8 +146,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "3312d4e3dd75edd2",
+  "active": "b6e1cef4f8fcdb59",
   "lastOpenFiles": [
+    "auto/定时任务.md",
+    "jenkins.md",
     "Pasted image 20230207104319.png",
     "Jenkins.md",
     "Pasted image 20230207104020.png"
