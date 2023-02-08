@@ -7,6 +7,6 @@ git add .
 
 time=$(date "+%Y/%m/%d-%H:%M:%S")
 
-git commit -m "${time} auto update note repo "
+git commit -m "${time} auto update note repo"
 
 git push
