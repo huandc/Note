@@ -1,11 +1,7 @@
 #!/bin/bash
 source /etc/profile
 
-git stash save backup
-
 git pull -r
-
-git stash pop
 
 git add .
 
